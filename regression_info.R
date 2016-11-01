@@ -86,3 +86,14 @@ reg_plot <- reg_plot + geom_point()
 reg_plot <- reg_plot + theme_classic()
 reg_plot <- reg_plot + geom_smooth(data=PI_data, aes(x=IQ,y=fit, ymin=lwr, ymax=upr),stat="identity")
 print(reg_plot)
+
+#don't need to go through all this work if you JUST want to the CONFIDENCE INTERVAL - doesnt have a shortcut for PI intervals 
+### dont understand this .... need to review the shortcutand what to change in code 
+reg_plot <- reg_plot + geom_smooth(method="lm", se=TRUE)
+# does the same as reg_plot <- reg_plot + geom_smooth(data=CI_data, aes(x=IQ,y=fit, ymin=lwr, ymax=upr),stat="identity")
+##see below
+reg_plot <- ggplot(sample1_data, aes(x=IQ, y=performance))
+reg_plot <- reg_plot + geom_point()
+reg_plot <- reg_plot + theme_classic()
+reg_plot <- reg_plot + geom_smooth(method="lm", se=TRUE)
+print(reg_plot)
